@@ -1,9 +1,14 @@
 import streamlit as st
 import pickle
 from string import punctuation
+import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
 from nltk.stem import WordNetLemmatizer
+
+nltk.download('stopwords')
+nltk.download('punkt')
+nltk.download('wordnet')
 
 #Defining a function to preprocess text
 def transform_text(text):
@@ -23,6 +28,7 @@ model = pickle.load(open('model.pkl', 'rb'))
 #Creating the user interface
 st.title('Email Spam Classifier')
 input_field = st.text_area('Input here')
+
 
 if st.button("Predict"):
 
